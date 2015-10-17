@@ -23,16 +23,19 @@ module ODFReport
     private
 
     def find_text_node(doc)
-      texts = doc.xpath(".//text:p[text()='#{to_placeholder}']")
+      texts = doc.xpath(".//text:p/text-input[text()='#{to_placeholder}']")
       if texts.empty?
-        texts = doc.xpath(".//text:p/text:span[text()='#{to_placeholder}']")
+        texts = doc.xpath(".//text:p[text()='#{to_placeholder}']")
         if texts.empty?
-          texts = nil
+          texts = doc.xpath(".//text:p/text:span[text()='#{to_placeholder}']")
+          if texts.empty?
+            texts = nil
+          else
+            texts = texts.first.parent
+          end
         else
-          texts = texts.first.parent
+          texts = texts.first
         end
-      else
-        texts = texts.first
       end
 
       texts

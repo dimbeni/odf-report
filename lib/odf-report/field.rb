@@ -44,8 +44,11 @@ module ODFReport
       if data_item.is_a?(Hash)
         data_item[key] || data_item[key.to_s.downcase] || data_item[key.to_s.upcase] || data_item[key.to_s.downcase.to_sym]
 
-      elsif data_item.respond_to?(key.to_s.downcase.to_sym)
-        data_item.send(key.to_s.downcase.to_sym)
+      #elsif data_item.respond_to?(key.to_s.downcase.to_sym)
+      #  data_item.send(key.to_s.downcase.to_sym)
+      elsif data_item.respond_to?(key.to_s.to_sym)
+        data_item.send(key.to_s.to_sym)
+
 
       else
         raise "Can't find field [#{key}] in this #{data_item.class}"
@@ -57,11 +60,12 @@ module ODFReport
     private
 
     def to_placeholder
-      if DELIMITERS.is_a?(Array)
-        "#{DELIMITERS[0]}#{@name.to_s.upcase}#{DELIMITERS[1]}"
-      else
-        "#{DELIMITERS}#{@name.to_s.upcase}#{DELIMITERS}"
-      end
+      #if DELIMITERS.is_a?(Array)
+      #  "#{DELIMITERS[0]}#{@name.to_s.upcase}#{DELIMITERS[1]}"
+      #else
+      #  "#{DELIMITERS}#{@name.to_s.upcase}#{DELIMITERS}"
+      #end
+      @name.to_s
     end
 
     def sanitize(txt)
