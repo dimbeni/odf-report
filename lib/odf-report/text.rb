@@ -6,7 +6,7 @@ module ODFReport
 
     def replace!(doc, data_item = nil)
 
-      return unless node = find_text_node(doc)
+      return unless nodes = find_text_node(doc)
 
       text_value = get_value(data_item)
 
@@ -17,7 +17,9 @@ module ODFReport
       #end
 
       #node.remove
-      node.content = text_value
+      nodes.each do |node|
+        node.content = text_value
+      end
 
     end
 
@@ -30,7 +32,7 @@ module ODFReport
       if texts.empty?
         nil
       else
-        texts.first
+        texts
       end
 
       #texts = doc.xpath(".//text:p[text()='#{to_placeholder}']")
