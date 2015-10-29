@@ -26,8 +26,6 @@ module ODFReport
     private
 
     def find_text_node(doc)
-      puts "find_text_node #{to_placeholder}\n"
-      #texts = doc.xpath(".//text:text-input[text()='#{to_placeholder}']")
       texts = doc.xpath(".//text:text-input[@text:description='#{to_placeholder}']")
       if texts.empty?
         nil
