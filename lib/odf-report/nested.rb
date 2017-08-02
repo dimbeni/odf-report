@@ -33,11 +33,6 @@ module ODFReport
       yield(sec)
     end
 
-    def add_image(name, path)
-      @images[name] = path
-
-    end
-
     def get_collection_from_item(item, collection_field)
 
       return item[collection_field] if item.is_a?(Hash)
