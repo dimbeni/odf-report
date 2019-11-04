@@ -8,9 +8,8 @@ Gem::Specification.new do |s|
 
   s.authors = ["Sandro Duarte"]
   s.description = %q{Generates ODF files, given a template (.odt) and data, replacing tags}
-  s.email = %q{sandrods@gmail.com}
-  s.has_rdoc = false
-  s.homepage = %q{http://sandrods.github.com/odf-report/}
+  s.email = %q{davide.imbeni@gmail.com}
+  s.homepage = %q{https://github.com/dimbeni/odf-report/}
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Generates ODF files, given a template (.odt) and data, replacing tags}
 
@@ -19,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "bundler", "~> 1.6"
+  s.add_development_dependency "bundler"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec", "~> 3.0.0"
   s.add_development_dependency "faker"
